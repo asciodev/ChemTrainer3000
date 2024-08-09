@@ -25,7 +25,15 @@ h1 {
 }
 
 .reagent.card span {
+  display: block;
+  max-height: 20px;
+  word-wrap: break-word;
   hyphens: auto;
+  white-space: normal;
+}
+
+.reagent.card span.name {
+  font-weight: bolder;
 }
 
 .reagent.card span.number {

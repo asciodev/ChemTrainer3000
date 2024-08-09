@@ -10,7 +10,7 @@ interface ReagentCardInput {
 
 function ReagentCard({ input } : { input: ReagentCardInput}) {
   return <div className="reagent card">
-      <span>{input.reagent.name}</span>
+      <span className="name">{input.reagent.name}</span>
       <hr/>
       <span className="number">{input.amount}</span>
     </div>
