@@ -1,16 +1,19 @@
 interface reagent {
   name: string,
+  id: string,
+}
+
+interface ReagentCardInput {
+  reagent: reagent,
   amount: number | string
 }
 
-function ReagentCard({ reagent } : { reagent: reagent }) {
-  return <>
-    <div className="reagent card">
-      <span>{reagent.name}</span>
+function ReagentCard({ input } : { input: ReagentCardInput}) {
+  return <div className="reagent card">
+      <span>{input.reagent.name}</span>
       <hr/>
-      <span>{reagent.amount}</span>
+      <span className="number">{input.amount}</span>
     </div>
-  </>
 }
 
 export default ReagentCard

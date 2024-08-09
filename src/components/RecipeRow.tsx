@@ -1,16 +1,21 @@
-import recipes, { Recipe } from "../recipes/recipes"
+import reagents from "../reagents"
+import { Recipe } from "../recipes/recipes"
 import ReagentCard from "./ReagentCard"
 
 function RecipeRow({ recipe } : { recipe: Recipe}) {
 
-  return <>
-    <tr>
-      <td><ReagentCard reagent={{name: recipe.name, amount: Number(recipe.result_amount)}}/></td>
-      <td className="d-flex flex-wrap">{Object.keys(recipe.required_reagents).map(reagent_id => <>
-        <ReagentCard reagent={{name: recipes[reagent_id]?.name || reagent_id, amount: recipe.required_reagents[reagent_id]}} />
-      </>)}{!!recipe.min_temp && <ReagentCard reagent={{name: "Temperature", amount: recipe.min_temp}} />}</td>
+  const reagent = reagents.find((reagent) => !!reagent && reagent.id === recipe.result) || {name: "Unknown", id: "0"};
+  return reagent && <tr>
+      <td>{!!reagent && <ReagentCard input={{reagent: reagent, amount: recipe.result_amount || 0}}/>}</td>
+       <td className="d-flex flex-wrap">
+        {Object.keys(recipe.required_reagents).map(function(reagent_id){
+          const ingredient = reagents.find((reagent) => reagent.id === reagent_id);
+          return <div key={reagent_id}>
+            {ingredient && <ReagentCard input={{reagent: ingredient, amount: recipe.required_reagents[reagent_id]}} /> }
+          </div>
+        })}{!!recipe.min_temp && <ReagentCard input={{reagent: {name: "Temperature", id: "min_temp"}, amount: recipe.min_temp}} />}
+      </td>
     </tr>
-  </>
 }
 
 export default RecipeRow
