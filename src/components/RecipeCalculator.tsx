@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import './RecipeCalculator.css'
-import ReagentCard from './ReagentCard';
 import recipes from '../recipes/recipes';
 import RecipeRow from './RecipeRow';
+import Fuse from 'fuse.js';
 
 function RecipeCalculator() {
   const [searchData, setSearchData] = useState("");
+  const fuse = new Fuse(Object.keys(recipes));
+  const results = fuse.search(searchData);
   function search(query: string) {
     setSearchData(query);
   }
@@ -30,16 +32,9 @@ function RecipeCalculator() {
         </tr>
       </thead>
       <tbody>
-        {Object.keys(recipes).map(recipe_name => <>
-          <RecipeRow recipe={recipes[recipe_name]} />
+        {results.map(recipe_name => <>
+          <RecipeRow recipe={recipes[recipe_name.item]} />
         </>)}
-        <tr>
-          <td><ReagentCard reagent={{name: "Potassium Iodide", amount: 2}}></ReagentCard></td>
-          <td className="d-flex">
-            <ReagentCard reagent={{name: "Potassium", amount: 1}}/>
-            <ReagentCard reagent={{name: "Iodine", amount: 1}}/>
-          </td>
-        </tr>
       </tbody>
     </table>
   </>;
