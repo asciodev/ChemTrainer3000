@@ -1,0 +1,36 @@
+#root {
+  min-width: 960px;
+}
+
+h1 {
+  text-align: right;
+}
+
+#betatesterwelcome {
+  max-width: 600px;
+  margin-left: auto;
+  text-align: right;
+}
+
+.legal {
+  font-size: 80%;
+}
+
+.reagent.card {
+  width: 150px;
+  text-align: center;
+  padding: 0.5em !important;
+}
+
+td:not(:last-child){
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+td:last-child{
+  width: 100%;
+}
+
+table {
+  max-width: 960px;
+}
