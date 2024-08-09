@@ -4,7 +4,7 @@ import ReagentCard from "./ReagentCard"
 
 function RecipeRow({ recipe } : { recipe: Recipe}) {
 
-  const reagent = reagents.find((reagent) => !!reagent && reagent.id === recipe.result) || {name: "Unknown", id: "0"};
+  const reagent = reagents.find((reagent) => !!reagent && reagent.id === recipe.result) || {name: recipe.name, id: "0"};
   return reagent && <tr>
       <td>{!!reagent && <ReagentCard input={{reagent: reagent, amount: recipe.result_amount || 0}}/>}</td>
        <td className="d-flex flex-wrap">
