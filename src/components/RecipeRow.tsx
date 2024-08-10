@@ -1,6 +1,7 @@
 import reagents from "../reagents"
 import { Recipe } from "../recipes/recipes"
 import ReagentCard from "./ReagentCard"
+import TemperatureCard from "./TemperatureCard";
 
 function RecipeRow({ recipe } : { recipe: Recipe}) {
 
@@ -11,9 +12,9 @@ function RecipeRow({ recipe } : { recipe: Recipe}) {
         {Object.keys(recipe.required_reagents).map(function(reagent_id){
           const ingredient = reagents.find((reagent) => reagent.id === reagent_id);
           return <div key={reagent_id}>
-            {ingredient && <ReagentCard input={{reagent: ingredient, amount: recipe.required_reagents[reagent_id]}} /> }
+            <ReagentCard input={{reagent: ingredient || {name: reagent_id, id: reagent_id}, amount: recipe.required_reagents[reagent_id]}} />
           </div>
-        })}{!!recipe.min_temp && <ReagentCard input={{reagent: {name: "Temperature", id: "min_temp"}, amount: recipe.min_temp}} />}
+        })}{!!recipe.min_temp && <TemperatureCard t0temp={recipe.min_temp} />}
       </td>
     </tr>
 }
