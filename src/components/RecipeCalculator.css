@@ -52,3 +52,7 @@ td:last-child{
 table {
   max-width: 960px;
 }
+
+td:first-child rt {
+  font-size: .9em;
+}

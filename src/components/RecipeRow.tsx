@@ -8,7 +8,7 @@ function RecipeRow({ recipe } : { recipe: Recipe}) {
 
   const reagent = reagents.find((reagent) => !!reagent && reagent.id === recipe.result) || {name: recipe.name, id: "0"};
   return reagent && <tr>
-      <td>{!!reagent && <ReagentCard input={{reagent: reagent, amount: recipe.result_amount || 0}}/>}</td>
+      <td>{!!reagent && <ReagentCard input={{reagent: reagent, amount: recipe.result_amount || 0, category: recipe.category}}/>}</td>
        <td className="d-flex flex-wrap">
         {
           Object.keys(recipe.required_reagents).map(function(reagent_id){
