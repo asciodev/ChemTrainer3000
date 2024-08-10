@@ -1,9 +1,9 @@
-interface reagent {
+export interface reagent {
   name: string,
   id: string,
 }
 
-interface ReagentCardInput {
+export interface ReagentCardInput {
   reagent: reagent,
   amount: number | string
 }

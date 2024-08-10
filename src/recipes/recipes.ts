@@ -16,6 +16,7 @@ export interface Recipe {
   result?: string | null,
   result_amount?: number,
   required_reagents: RequiredReagents,
+  required_catalysts?: RequiredReagents,
   path: string,
   min_temp?: string,
   category: string,
