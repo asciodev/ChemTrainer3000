@@ -2200,7 +2200,7 @@ const reagents = [{
   taste_description: "the inside of a toilet... or worse"
 },
 {
-  name: "Water",
+  name: "Holy Water",
   path: "/datum/reagent/holywater",
   id: "holywater",
   description: "A ubiquitous chemical substance that is composed of hydrogen and oxygen.",
