@@ -1,16 +1,11 @@
-function TemperatureCard({ t0temp } : { t0temp : string | number}) {
-  function kelvin(temp: string | number) {
-    const re = temp.toString().match(/T0C \+ (\d+)/);
-    return re ? Number(re[1]) + 273.15 + " K" : "???";
-  }
-  function celsius(temp: string | number) {
-    const re = temp.toString().match(/T0C \+ (\d+)/);
-    return re ? Number(re[1]) + "°C" : "???"
+function TemperatureCard({ min_temp } : { min_temp : number}) {
+  function celsius(temp: number) {
+    return temp - 273.15;
   }
   return <div className="reagent temperature card">
     <span className="name">Min Temp</span>
     <hr></hr>
-    <span className="number"><ruby>{kelvin(t0temp)}<rp>(</rp><rt>{celsius(t0temp)}</rt><rp>)</rp></ruby></span>
+    <span className="number"><ruby>{min_temp} K<rp>(</rp><rt>{celsius(min_temp)}°C</rt><rp>)</rp></ruby></span>
   </div>
 }
 

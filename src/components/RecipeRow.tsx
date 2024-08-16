@@ -25,7 +25,7 @@ function RecipeRow({ recipe } : { recipe: Recipe}) {
             </div>
           })
         }{
-          !!recipe.min_temp && <TemperatureCard t0temp={recipe.min_temp} />
+          !!recipe.min_temp && <TemperatureCard min_temp={Math.round(recipe.min_temp * 100) / 100} />
         }
       </td>
     </tr>
