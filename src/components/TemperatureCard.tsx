@@ -1,10 +1,10 @@
-function TemperatureCard({ t0temp } : { t0temp : string}) {
-  function kelvin(temp: string) {
-    const re = temp.match(/T0C \+ (\d+)/);
+function TemperatureCard({ t0temp } : { t0temp : string | number}) {
+  function kelvin(temp: string | number) {
+    const re = temp.toString().match(/T0C \+ (\d+)/);
     return re ? Number(re[1]) + 273.15 + " K" : "???";
   }
-  function celsius(temp: string) {
-    const re = temp.match(/T0C \+ (\d+)/);
+  function celsius(temp: string | number) {
+    const re = temp.toString().match(/T0C \+ (\d+)/);
     return re ? Number(re[1]) + "°C" : "???"
   }
   return <div className="reagent temperature card">

@@ -47,7 +47,7 @@ class ChemExtractor:
 			else:
 				if(var != "cooktype"):
 					rec[var] = td.value(var)
-				if(var == "result"):
+				if(var == "result" and rec[var] != "null" and rec[var] is not None):
 					tdid = rec[var]
 		return {tdid: rec}
 

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './RecipeCalculator.css'
 import RecipeRow from './RecipeRow';
-import recipes from '../recipes/recipes';
+import recipes from '../recipes/recipes.json';
 import Fuse from 'fuse.js';
 
 function RecipeCalculator() {

@@ -11,10 +11,10 @@ function RecipeRow({ recipe } : { recipe: Recipe}) {
       <td>{!!reagent && <ReagentCard input={{reagent: reagent, amount: recipe.result_amount || 0, category: recipe.category}}/>}</td>
        <td className="d-flex flex-wrap">
         {
-          Object.keys(recipe.required_reagents).map(function(reagent_id){
+          Object.keys(recipe.required_reagents || []).map(function(reagent_id){
             const ingredient = reagents.find((reagent) => reagent.id === reagent_id);
             return <div key={reagent_id}>
-              <ReagentCard input={{reagent: ingredient || {name: reagent_id, id: reagent_id}, amount: recipe.required_reagents[reagent_id]}} />
+              <ReagentCard input={{reagent: ingredient || {name: reagent_id, id: reagent_id}, amount: recipe.required_reagents ? recipe.required_reagents[reagent_id] : 0}} />
             </div>
           })
         }{
